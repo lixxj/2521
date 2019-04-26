@@ -1,0 +1,213 @@
+
+This handout is for those of you who want the quick and dirty answers to
+what how does sorting algorithm "x" work and how does it compare to the 
+other ones we've learned. If you want to really understand these 
+algorithms, you should look at the code and notes from lecture.
+
+For any particular sorting algorithm, we want to do it fast. In
+practice, constant factors and ease of implementation can be important
+in picking an algorithm. We'll assume for all of these algorithms that
+our input is presented in an array of length n.
+
+  AVERAGE CASE TIME - given an arbitrary input, what do we expect
+    the running time to be
+  
+  WORST CASE TIME - for a particular degenerate case, how bad will
+    the algorithm perform
+
+  BEST CASE TIME - for a particularly benevolent input case, what is
+    the best case performance. This will always be at least O(n).
+    Why?
+
+  SITUATIONS WHERE USEFUL - for waht inputs and applications, is this
+    kind of sort useful
+
+Basic sorts
+======================================================================
+The "basic" sorts generally make n passes through the input vector
+An important measure for any of these sorts is:
+
+  SITUATION AFTER ITH PASS: what the vector looks like after the going
+    through the vector i times
+
+Insertion sort
+----------------------------------------------------------------------
+insert an as-yet-unprocessed record into a (sorted) list of the records
+processed so far
+
+SITUATION AFTER ITH PASS: first i elements sorted
+AVERAGE CASE TIME: O(n^2)
+WORST CASE TIME: O(n^2) when in reverse sorted order takes about twice
+as long as average case
+BEST CASE TIME: O(n) when already in sorted order
+SITUATIONS WHERE USEFUL: Simple sort, easy to implement. Good when the
+number of inversions is small. 
+
+Shell's sort
+----------------------------------------------------------------------
+The problem with insertion sort is that elements can only be moved one
+slot at a time. In the reverse order case, we had to move each element
+all the way down the vector each time. Shell's sort makes things better
+on average by sorting the vector with various "strides."
+SITUATION AFTER ITH PASS: 
+AVERAGE CASE TIME: O(n^1.5) when we divide the stride by 2.2 each time
+WORST CASE TIME: with stride of 1 it's just insertion sort which can
+take. The earlier passes don't necessarily have to help in the sorting
+the overall vector. Luckily on average, this doesn't happen.
+BEST CASE TIME: O(n) if we set the stride to 1 and we have a sorted list
+SITUATIONS WHERE USEFUL: good sort for general purpose sorting when
+insertion sort has trouble. There's a bit more overhead involved.
+
+Selection sort
+----------------------------------------------------------------------
+Just find the minimum of the remaining elements each time.
+SITUATION AFTER ITH PASS: first i elements are sorted and in proper
+position 
+AVERAGE CASE TIME: O(n^2) you've got to go through and find the minimum
+each time, which is a linear time operation, so T(n) = n + n-1 + ... + 1
+which is in O(n^2)
+WORST CASE TIME: O(n^2) It's not sensitive to the input
+BEST CASE TIME: O(n^2)
+SITUATIONS WHERE USEFUL: Another relatively easy sort. Insensitive to
+the data, so it's good if we wanted to have our sort always take the
+same time. 
+
+Bubble sort
+----------------------------------------------------------------------
+On each pass, if two elements are out of order swap them. You're done
+when you can go through the entire vector with no swaps.
+SITUATION AFTER ITH PASS: last i sorted and in proper position.
+AVERAGE CASE TIME: O(n^2) sweeping through the first n-i each time
+regardless. 
+WORST CASE TIME: O(n^2) and it really is slow
+BEST CASE TIME: O(n) when sorted or mostly sorted (possibly a few
+elements a place or two away from their correct spots)
+SITUATIONS WHERE USEFUL: probably none
+
+Divide and Conquer Sorts
+======================================================================
+Well, n^2 or even n^1.25 is good, but we can do better. In fact, we can
+prove that we can do better. 
+  BASE CASE - the end of the recursion
+
+  DIVIDE STEP - splitting up the problem into more manageable pieces
+
+Merge sort
+----------------------------------------------------------------------
+BASE CASE: 
+DIVIDE STEP: mergesort each half and then merge the two in O(n) time
+AVERAGE CASE TIME: O(nlogn), we split the problem in two every time
+regardless 
+WORST CASE TIME: O(nlogn)
+BEST CASE TIME: O(nlogn)
+SITUATIONS WHERE USEFUL: very good for working in parallel, since every
+mergesort is working on a different portion of the vector. Not sensitive
+to the data input.
+
+Quick sort
+----------------------------------------------------------------------
+BASE CASE: Is our portion of the vector close to sorted? If so, just use
+insertion sort
+DIVIDE STEP: Choose a pivot and divide the vector into elements smaller
+than the pivot and elements greater than it
+AVERAGE CASE TIME: O(nlogn) - on average the pivot will evenly divide
+the vector
+WORST CASE TIME: O(n^2) if the pivot gives us very uneven partitions
+each time
+BEST CASE TIME: O(n) if we're given a pretty well sorted vector, we can
+just call insertion sort on it immediately
+SITUATIONS WHERE USEFUL: the fastest practical sort. There exist very
+finely tuned versions for most systems.
+
+
+An interesting result is that for any sort which relies on just
+comparisons, you will always have to do O(nlogn) comparisons in the
+worst case.  Why is this?
+
+See Weiss, section 8.8 
+
+"Restricted" Sorts
+======================================================================
+If we only rely on comparisons, our algorithm must take O(nlogn) worst
+case time. When we know more about our input, we can possibly make our
+bound O(n).
+ 
+  RESTRICTION - in what form do the input elements need to be. 
+
+  K FACTOR - how does the form of the input elements affect running time
+
+Distribution sort
+----------------------------------------------------------------------
+Distribution sort is useful when the records to be sorted are in small
+range of integers or other cardinal values.
+
+So let's say our numbers are between U and L. Thus, we store our range
+(k) is U-L+1. 
+ Set counting vector of size k to all zeroes
+ For each of n in original set (n of them)
+   increment C[i] every time we see the number L+i. (O(1))
+ // C[i] now contains elements equal to L+i
+ For each element in counting vector (k of them)
+   C[j] += C[j-1]
+ // C[i] now has contains the number of elements <= L+i
+  
+ //  Copy elements from original vector A into new vector B into a place
+ //  spot designated by C[i]
+ For each of n in original set (n of them)
+   put element in new vector B from A[i] in the spot dictated by C[A[i]-L]
+    since C[A[i]-L] is the number of elements less than A[i], that will
+    be a proper spot for the sorted A[i]  
+   increment count vector to correspond with new position for next example
+   of A[i]
+
+RESTRICTION: elements in integral range L to U
+K FACTOR: k = U-L
+AVERAGE CASE TIME: O(k + n), not sensitive to input beyond values of L
+and U
+WORST CASE TIME: O(k + n), don't forget that k is generally quite
+large. For integers, k is 2^32,
+BEST CASE TIME: O(k + n)
+SITUATIONS WHERE USEFUL: have restricted range of inputs, like in radix 
+sort
+
+Radix sort
+----------------------------------------------------------------------
+  For each digit going least significant to most significant:
+    For all n numbers 
+      Place number in proper bin 
+    Distribution sort each bin
+    Concatenate sorted results from each bin and repeat
+
+RESTRICTION: The keys are sequences of fixed-sized "digits"
+K FACTOR: d is the number of digits. k is the range of each digit. For
+example, for decimal numbers under 1000, d = 3 and k = 10.
+
+AVERAGE CASE TIME: O(dn+kd)
+WORST CASE TIME: O(dn+kd)
+BEST CASE TIME: O(dn+kd)
+SITUATIONS WHERE USEFUL: things like bounded integers or bounded length
+strings
+
+Bucket sort
+----------------------------------------------------------------------
+Bucket sort assumes that the input is generated by some random process
+which uniformly distributes the numbers over some interval. Divide
+interval into n equally sized buckets. 
+
+for each element in original vector
+  insert sorted into proper bucket O(1 + length of list in bucket)
+concatenate the lists from all of the buckets together
+
+If we have an input of size n, we have n buckets. On average each bucket  
+will have 1 element, so the length of the list in each bucket is 1. We
+can then do insertion sort for a particular bucket in constant time.
+
+RESTRICTION: uniformly distributed floating point numbers in some
+interval
+K FACTOR: k = length of list in bucket, so general running time is 
+O(1 + k)
+AVERAGE CASE TIME: O(n)
+WORST CASE TIME: O(n^2) if everything ends up in the same bucket
+BEST CASE TIME: O(n)
+SITUATIONS WHERE USEFUL: when we're sorting random numbers or randomly
+generated values of some kind

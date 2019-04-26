@@ -1,0 +1,27 @@
+#!/bin/sh
+
+for size in 100 1000
+do
+	for order in random sorted reverse
+	do
+		echo === Testing correct for $order input, size $size ===
+		for i in 1 2 3 4 5
+		do
+		    echo Run $i
+			case $order in
+			random) flag="R" ;;
+			sorted) flag="A" ;;
+			reverse) flag="D" ;;
+			esac
+			{ ./gen $size $flag > tData ;
+			 sort -n -s < tData > sorted1 ; 
+			 ./sortB < tData > sorted2 ;
+			 diff sorted1 sorted2 ; }
+		done
+
+	done
+	
+	#rm sorted1
+	#rm sorted2
+	rm tData
+done

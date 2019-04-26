@@ -1,0 +1,18 @@
+#!/bin/sh
+# MODIFIED by XJ
+
+size=5000
+#size=200
+#change input size to 200 to implement original tests
+for seed in 1 2 3 4 5 6 7 8 9 10
+do
+    for insert in L A B R S V
+    do
+	    for order in A P R
+	    do
+		    echo ""
+		    echo "Test: ./tlab $size $order $insert $seed"
+		    echo "t" | ./tlab $size $order $insert $seed| grep -v Tree
+	    done
+    done
+done

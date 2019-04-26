@@ -1,0 +1,30 @@
+Input	Initial	   Has	  Number	  AvgTime	AvgTime
+Size	Order	   Dups   of runs	  for usel  for sort
+5000	random	   no	     5	      0.076s	0.012s
+5000	sorted	   no	     5	      0.006s	0.004s
+5000	reverse	   no	     5	      0.004s	0.004s
+5000	random	   yes	     5	      0.076s	0.011s
+5000	sorted	   yes	     5	      0.008s	0.007s
+5000	reverse	   yes	     5	      0.006s	0.004s
+10000	random	   no	     5	      0.232s	0.023s
+10000	sorted	   no	     5	      0.006s	0.004s
+10000	reverse	   no	     5	      0.012s	0.012s
+10000	random	   yes	     5	      0.216s	0.017s
+10000	sorted	   yes	     5	      0.008s	0.008s
+10000	reverse	   yes	     5	      0.006s	0.006s
+
+From the experiment record above, it is clear that when input lists are
+sorted or reverse sorted, there isn't significant difference between 
+Avgtime for usel and Avgtime for sort. However when the input lists are 
+random, there could be a huge difference(over ten times).
+
+This is because when the original list is sorted in order or in reverse
+order, the complexity for usel algorithm is the length of the list, N.
+But when input is a random ordered list , usel need to go through and 
+scan all the existing list every time when a new element is being 
+inserted, hence the compexity for program becomes N^2(this is how the 
+IntListInsertInOrder function in IntList.c works). And it takes much 
+longer time than the algorithm which "sort" command is using.
+
+XJ Xingjian Li z5190719
+

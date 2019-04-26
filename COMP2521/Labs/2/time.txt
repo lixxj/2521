@@ -1,0 +1,82 @@
+Results from usel
+Average for 1000 numbers sorted with duplicates: 
+Average for 1000 numbers reverse with duplicates: 
+Average for 1000 numbers random with duplicates: 
+
+Average for 1000 numbers sorted with noDuplicates: 
+Average for 1000 numbers reverse with noDuplicates: 
+Average for 1000 numbers random with noDuplicates: 
+
+Average for 5000 numbers sorted with duplicates: 
+Average for 5000 numbers reverse with duplicates: 
+Average for 5000 numbers random with duplicates: 
+
+Average for 5000 numbers sorted with noDuplicates: 
+Average for 5000 numbers reverse with noDuplicates: 
+Average for 5000 numbers random with noDuplicates: 
+
+Average for 10000 numbers sorted with duplicates: 
+Average for 10000 numbers reverse with duplicates: 
+Average for 10000 numbers random with duplicates: 
+
+Average for 10000 numbers sorted with noDuplicates: 
+Average for 10000 numbers reverse with noDuplicates: 
+Average for 10000 numbers random with noDuplicates: 
+
+Average for 25000 numbers sorted with duplicates: 
+Average for 25000 numbers reverse with duplicates: 
+Average for 25000 numbers random with duplicates: 
+
+Average for 25000 numbers sorted with noDuplicates: 
+Average for 25000 numbers reverse with noDuplicates: 
+Average for 25000 numbers random with noDuplicates: 
+
+Average for 50000 numbers sorted with duplicates: 
+Average for 50000 numbers reverse with duplicates: 
+Average for 50000 numbers random with duplicates: 
+
+Average for 50000 numbers sorted with noDuplicates: 
+Average for 50000 numbers reverse with noDuplicates: 
+Average for 50000 numbers random with noDuplicates: 
+
+Results from sortR
+Average for 1000 numbers sorted with duplicates: .0040
+Average for 1000 numbers reverse with duplicates: .0040
+Average for 1000 numbers random with duplicates: .0040
+
+Average for 1000 numbers sorted with noDuplicates: .0040
+Average for 1000 numbers reverse with noDuplicates: .0040
+Average for 1000 numbers random with noDuplicates: .0040
+
+Average for 5000 numbers sorted with duplicates: .0040
+Average for 5000 numbers reverse with duplicates: .0040
+Average for 5000 numbers random with duplicates: .0040
+
+Average for 5000 numbers sorted with noDuplicates: .0040
+Average for 5000 numbers reverse with noDuplicates: .0040
+Average for 5000 numbers random with noDuplicates: .0040
+
+Average for 10000 numbers sorted with duplicates: .0040
+Average for 10000 numbers reverse with duplicates: .0040
+Average for 10000 numbers random with duplicates: .0040
+
+Average for 10000 numbers sorted with noDuplicates: .0040
+Average for 10000 numbers reverse with noDuplicates: .0040
+Average for 10000 numbers random with noDuplicates: .0040
+
+Average for 25000 numbers sorted with duplicates: .0040
+Average for 25000 numbers reverse with duplicates: .0040
+Average for 25000 numbers random with duplicates: .0040
+
+Average for 25000 numbers sorted with noDuplicates: .0040
+Average for 25000 numbers reverse with noDuplicates: .0040
+Average for 25000 numbers random with noDuplicates: .0040
+
+Average for 50000 numbers sorted with duplicates: .0040
+Average for 50000 numbers reverse with duplicates: .0040
+Average for 50000 numbers random with duplicates: .0040
+
+Average for 50000 numbers sorted with noDuplicates: .0040
+Average for 50000 numbers reverse with noDuplicates: .0040
+Average for 50000 numbers random with noDuplicates: .0040
+

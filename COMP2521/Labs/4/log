@@ -1,0 +1,16 @@
+=== Testing for random input, size 10 ===
+0.00user 0.00system 0:00.00elapsed 0%CPU (0avgtext+0avgdata 1424maxresident)k
+0inputs+0outputs (0major+84minor)pagefaults 0swaps
+0.00user 0.00system 0:00.00elapsed ?%CPU (0avgtext+0avgdata 1488maxresident)k
+0inputs+0outputs (0major+86minor)pagefaults 0swaps
+0.00user 0.00system 0:00.00elapsed ?%CPU (0avgtext+0avgdata 1416maxresident)k
+0inputs+0outputs (0major+85minor)pagefaults 0swaps
+0.00user 0.00system 0:00.00elapsed ?%CPU (0avgtext+0avgdata 1416maxresident)k
+0inputs+0outputs (0major+85minor)pagefaults 0swaps
+0.00user 0.00system 0:00.00elapsed ?%CPU (0avgtext+0avgdata 1428maxresident)k
+0inputs+0outputs (0major+84minor)pagefaults 0swaps
+0.00user 0.00system 0:00.00elapsed ?%CPU (0avgtext+0avgdata 1416maxresident)k
+0inputs+0outputs (0major+84minor)pagefaults 0swaps
+0.00user 0.00system 0:00.00elapsed ?%CPU (0avgtext+0avgdata 1524maxresident)k
+0inputs+0outputs (0major+88minor)pagefaults 0swaps
+XJ
